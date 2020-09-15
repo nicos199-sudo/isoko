@@ -1,0 +1,18 @@
+
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="container" style="width: 392px;height: 500px;margin-top: 57px;box-shadow: 0px 1px 14px 4px gray;border-radius: 5px;">
+<img src="{% static '/images/pp.jpeg' %}" style="width: 131px;margin-left: 106px;border-radius: 78px;box-shadow: 0px 1px 14px -6px gray;margin-top: 10px;">
+    <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-dark btn-lg btn-block" style="background-color: #002c79;">Login</button>
+  </form>
+
+</div>
+
+{% endblock %}
