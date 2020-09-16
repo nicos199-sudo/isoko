@@ -26,7 +26,7 @@ class SignupView(FormView):
 
 def Dashboard(request):
     """ make dashboard view """
-    return render(request, 'main/home.html')
+    return render(request, 'main/index.html')
 
 
 def Logout(request):

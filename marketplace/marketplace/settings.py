@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #our app
     'apps.main',
+    'apps.product'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
