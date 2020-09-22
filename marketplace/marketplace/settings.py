@@ -142,6 +142,7 @@ MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 #### custom user
