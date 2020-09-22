@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
@@ -54,3 +55,37 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """stirng representation"""
         return self.email
+
+class Setting(models.Model):
+    STATUS = (
+        ('True', 'True'),
+        ('False', 'False'),
+
+    )
+    title = models.CharField(max_length=50)
+    keywords = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+    company = models.CharField(max_length=50)
+    address = models.CharField(blank=True,max_length=50)
+    phone =  models.CharField(max_length=50, blank=True)
+    fax =  models.CharField(max_length=50, blank=True)
+    email =  models.CharField(max_length=50, blank=True)
+    smtpserver =  models.CharField(max_length=50, blank=True)
+    smtpemail =  models.CharField(max_length=50, blank=True)
+    smtppassword =  models.CharField(max_length=50, blank=True)
+    smtpport =  models.CharField(max_length=50, blank=True)
+    icon = models.ImageField(blank=True, upload_to='images/')
+    facebook =  models.CharField(max_length=50, blank=True)
+    instagram =  models.CharField(max_length=50, blank=True)
+    twitter =  models.CharField(max_length=50, blank=True)
+    youtube =  models.CharField(max_length=50, blank=True)
+    aboutus = RichTextUploadingField(blank=True)
+    contact = RichTextUploadingField(blank=True)
+    references = RichTextUploadingField(blank=True)
+    status =  models.CharField(max_length=50,choices=STATUS)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):
+        return self.title

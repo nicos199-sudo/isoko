@@ -57,3 +57,5 @@ class LoginView(FormView):
             messages.add_message(self.request, messages.INFO, 'Wrong credentials\
                                 please try again')
             return HttpResponseRedirect(reverse_lazy('login'))
+
+

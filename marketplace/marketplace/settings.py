@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #modules used
     'crispy_forms',
+    'ckeditor',
+    'ckeditor_uploader',
     #custom user
     'apps.custom_auth',
 
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'marketplace.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,13 +82,22 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'akagurirodb',
+        'USER': 'akaguriro',
+        'PASSWORD': 'meetyourneeds',
+        'HOST': 'localhost',
+
     }
 }
+#DATABASES = {
+   # 'default': {
+     #   'ENGINE': 'django.db.backends.sqlite3',
+     #   'NAME': BASE_DIR / 'db.sqlite3',
+   # }
+#}
 
 
 # Password validation
@@ -126,13 +137,35 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =(os.path.join(BASE_DIR, 'static'),)
-MEDIA_URL = '/media/'
+
+MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 #### custom user
 
 AUTH_USER_MODEL = 'custom_auth.User'
+
+
+####ckeditor
+
+SITE_ID = 1
+
+####################################
+    ##  CKEDITOR CONFIGURATION ##
+####################################
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'images/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+
+###################################
